@@ -9,20 +9,13 @@ fetch(queryURL).then((response) => response.json()).then((movieObject) => {
         movieObject.results.forEach( (movie) => {
           generateCards(movie);
         })
-        // cardRowSetup(generateCards);
+        cardRowSetup(movieContainer);
         
 })
 
+document.body.style.backgroundColor = "black"
 
-
-
-// console.log(fakeMoviesAPI.results[0]) 
-
-// let firstMovie = fakeMoviesAPI.results[0]
-
-// console.log(firstMovie)
-
-// document.body.style.backgroundColor = "black"
+// document.body.textContent.style.color = "white"
 
 function generateCards(movieObject){
 
@@ -65,6 +58,11 @@ function generateCards(movieObject){
 
 }
 
+function cardRowSetup(movieContainer){
+  for(let i = movieContainer[0]; movieContainer[i] % 5; movieContainer[i]++){
+    movieContainer[i] + "<br>";
+  }
+}
 // function cardRowSetup(generateCards){
 // for (movieObject.results[i] = 0; movieObject.results[i] % 5; movieObject.results[i]++) {
 //     generateCards += movieObject[i] + "<br>";
