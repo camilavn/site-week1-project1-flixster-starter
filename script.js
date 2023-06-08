@@ -73,22 +73,23 @@ let fakeMoviesAPI = {
     "total_results": 1951
 }
 
-console.log(fakeMoviesAPI.results(0))
+console.log(fakeMoviesAPI.results[0]) 
 
-let firstMovie = fakeMoviesAPI.results(0)
+let firstMovie = fakeMoviesAPI.results[0]
 
 console.log(firstMovie)
 
-function generateCards(){
+function generateCards(movieObject){
+
     //create the star
     let star = document.createElement('span');
     star.classList.add('star');
-    let starContent= document.createTextNode(movieObject.vote_average);
+    let starContent= document.createTextNode('⭐️');
     star.appendChild(starContent);
 
     //create rating
-    let rating = document .createElement('div');
-    let ratngContent = document.createElement('span');
+    let rating = document .createElement('span');
+    let ratngContent = document.createTextNode(movieObject.vote_average)
     rating.classList.add('rating');
     rating.appendChild(ratngContent);
 
