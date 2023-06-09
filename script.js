@@ -53,6 +53,7 @@ function fetchSearch(searchBarInput) {
     })
     
   });
+  
 }
 
 //sets background black color
@@ -130,4 +131,24 @@ submitBttn.addEventListener("click", function (event) {
   fetchSearch(searchBox.value);
   //console.log(searchBox.value)
 })
+
+//labeling creating clear button
+const clearBttn = document.getElementById("#clearBttn");
+clearBttn.innerHTML = "Clear";
+
+//connecting api to clear button to go to original 20
+clearBttn.addEventListener("click", function () {
+  newPage = 1;
+  fetch(queryURL, options).then((response) => response.json()).then((movieObject) => {
+    console.log(movieObject.results);
+  
+    movieObject.results.forEach((movie) => {
+  
+      generateCards(movie);
+  
+    });
+  
+  });
+});
+
 

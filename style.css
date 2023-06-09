@@ -53,5 +53,11 @@ button:hover {
     margin-bottom: 20px;
 }
 
+#clearBttn {
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 
 
