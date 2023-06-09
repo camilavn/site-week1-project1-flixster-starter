@@ -54,11 +54,11 @@ It was a little difficult creating a responsive search bar due to time constrain
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-I would have made a feature to wrap the extra long titles to a second line in order for some fit issues to be resolved.
+I would have made a feature to wrap the extra long titles to a second line in order for some fit issues to be resolved. I would add more styling to show more personality and things lke alt text to make my page more accessible.
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I got great feedback on my demo from my peers congradulating me on successfully walking them through my thought process while resolving a bug in my code while sucessfully using my actual code as an example and being aable to explain my approaches to solving a bug I'm still struggling on. My peers would like me to add more styling to show personality.
 
 ### Open-source libraries used
 

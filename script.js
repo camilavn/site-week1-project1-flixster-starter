@@ -18,80 +18,88 @@ fetch(queryURL, options).then((response) => response.json()).then((movieObject) 
 
   movieObject.results.forEach((movie) => {
 
-  generateCards(movie);
+    generateCards(movie);
 
   });
-  
+
 });
 
 //create new fetch so that page reloads adds more than 20 movies 
-function fetchAgain(newFetchPage){
-let newQueryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newFetchPage}`;
-fetch(newQueryURL, options).then((response) => response.json()).then((movieObject) => {
-        console.log(movieObject.results);
+function fetchAgain(newFetchPage) {
+  let newQueryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newFetchPage}`;
+  fetch(newQueryURL, options).then((response) => response.json()).then((movieObject) => {
+    console.log(movieObject.results);
 
-        movieObject.results.forEach((movie) => {
+    movieObject.results.forEach((movie) => {
 
-        generateCards(movie);
+      generateCards(movie);
 
-        });
-        
-});
+    });
+
+  });
 }
 
 //fetch to pull movies from search bar value
-function fetchSearch(searchBarInput){
-fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1', options)
-  .then(response => response.json())
-  .then(response => console.log(searchBarInput))
-  .catch(err => console.error(err));
+function fetchSearch(searchBarInput) {
+  const queryURLFrSrch = `https://api.themoviedb.org/3/search/movie?query=${searchBarInput}&include_adult=false&language=en-US&page=1`;
+  fetch(queryURLFrSrch, options).then(response => response.json()).then((matchingMovies) => {
+      //console.log(matchingMovies.results);
+      document.querySelector("#grid").innerHTML="";
+
+      matchingMovies.results.forEach((match) => {
+        //console.log(match.results)
+        generateCards(match);
+
+    })
+    
+  });
 }
 
 //sets background black color
 document.body.style.backgroundColor = "black"
 
 
-function generateCards(movieObject){
+function generateCards(movieObject) {
 
-    //creates movie conatiners for each card and a rid for the containers
-    let movieContainer = document.createElement("section");
-    let movieGridRow = document.querySelector("#grid")
-    movieGridRow.appendChild(movieContainer)
+  //creates movie conatiners for each card and a rid for the containers
+  let movieContainer = document.createElement("section");
+  let movieGridRow = document.querySelector("#grid")
+  movieGridRow.appendChild(movieContainer)
 
-    //adds image to container
-    let image = document.createElement('img')
-    image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
-    movieContainer.appendChild(image)
+  //adds image to container
+  let image = document.createElement('img')
+  image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
+  movieContainer.appendChild(image)
 
 
-    //create the star
-    let star = document.createElement('span');
-    star.classList.add('star');
-    let starContent= document.createTextNode('⭐️');
-    star.appendChild(starContent);
-    movieContainer.appendChild(star)
+  //create the star
+  let star = document.createElement('span');
+  star.classList.add('star');
+  let starContent = document.createTextNode('⭐️');
+  star.appendChild(starContent);
+  movieContainer.appendChild(star)
 
-    //create rating
-    let rating = document.createElement('span');
-    let ratngContent = document.createTextNode(movieObject.vote_average)
-    rating.classList.add('rating');
-    rating.appendChild(ratngContent);
-    movieContainer.appendChild(rating);
+  //create rating
+  let rating = document.createElement('span');
+  let ratngContent = document.createTextNode(movieObject.vote_average)
+  rating.classList.add('rating');
+  rating.appendChild(ratngContent);
+  movieContainer.appendChild(rating);
 
-    //create average container
-    let averageContainer = document.createElement('div');
-    averageContainer.classList.add('average');
-    averageContainer.appendChild(star);
-    averageContainer.appendChild(rating);
-    movieContainer.appendChild(averageContainer)
+  //create average container
+  let averageContainer = document.createElement('div');
+  averageContainer.classList.add('average');
+  averageContainer.appendChild(star);
+  averageContainer.appendChild(rating);
+  movieContainer.appendChild(averageContainer)
 
-    //create movie title
-    let movieName = document.createElement('div');
-    movieName.classList.add('movie-name');
-    movieName.innerText = movieObject.original_title
-    movieContainer.appendChild(movieName)
-      
-    
+  //create movie title
+  let movieName = document.createElement('div');
+  movieName.classList.add('movie-name');
+  movieName.innerText = movieObject.original_title
+  movieContainer.appendChild(movieName)
+
+
 
 }
 
@@ -106,16 +114,20 @@ body.appendChild(button);
 
 
 //added event handler
-button.addEventListener ("click", function() {
+button.addEventListener("click", function () {
   newPage++;
   fetchAgain(newPage);
 });
 
 
 //search value to be actioned when submit button is pressed
-let searchValue = document.querySelector(searchBarInput.valueOf("#innerSrchBarTxt"))
+let searchBox = document.querySelector("#innerSrchBarTxt")
+// console.log(searchBox)
 
-submitBttn.addEventListener ("click", function (){
-    fetchSearch(searchValue);
+
+submitBttn.addEventListener("click", function (event) {
+  event.preventDefault();
+  fetchSearch(searchBox.value);
+  //console.log(searchBox.value)
 })
 
