@@ -8,7 +8,7 @@ const options = {
 };
 
 //create new page variable
-let newPage = null;
+let newPage = 1;
 const movieDatabaseAPI = "de99d62b32317eae24a04bd50f9292cd"
 const queryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newPage}`;
 
@@ -24,7 +24,7 @@ fetch(queryURL, options).then((response) => response.json()).then((movieObject) 
   
 });
 
-//create new fetch so that page reloads 
+//create new fetch so that page reloads adds more than 20 movies 
 function fetchAgain(newFetchPage){
 let newQueryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newFetchPage}`;
 fetch(newQueryURL, options).then((response) => response.json()).then((movieObject) => {
@@ -37,6 +37,14 @@ fetch(newQueryURL, options).then((response) => response.json()).then((movieObjec
         });
         
 });
+}
+
+//fetch to pull movies from search bar value
+function fetchSearch(searchBarInput){
+fetch('https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1', options)
+  .then(response => response.json())
+  .then(response => console.log(searchBarInput))
+  .catch(err => console.error(err));
 }
 
 //sets background black color
@@ -87,9 +95,9 @@ function generateCards(movieObject){
 
 }
 
-//creating button variable
+//creating load more movies button variable
 let button = document.createElement("button");
-button.innerHTML = "Search More Movies";
+button.innerHTML = "Load More Movies";
 
 
 //appened to body
@@ -102,4 +110,12 @@ button.addEventListener ("click", function() {
   newPage++;
   fetchAgain(newPage);
 });
+
+
+//search value to be actioned when submit button is pressed
+let searchValue = document.querySelector(searchBarInput.valueOf("#innerSrchBarTxt"))
+
+submitBttn.addEventListener ("click", function (){
+    fetchSearch(searchValue);
+})
 

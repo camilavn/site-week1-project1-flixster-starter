@@ -40,4 +40,17 @@ button {
 button:hover {
     background: white;
 }
-  
+
+#innerSrchBarTxt {
+   font-weight: bold;   
+   padding: 10px;
+   margin-bottom: 20px;  
+}
+
+#submitBttn {
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
