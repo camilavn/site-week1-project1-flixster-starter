@@ -1,27 +1,56 @@
+//pull access api 
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZTk5ZDYyYjMyMzE3ZWFlMjRhMDRiZDUwZjkyOTJjZCIsInN1YiI6IjY0ODIwMjAwOTkyNTljMDBhY2NiNWZmMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqqjV8FERWyGynzZMmAqtQwWQL-kH6zvJNRlqGtdRQI'
+  }
+};
+
+//create new page variable
+let newPage = null;
 const movieDatabaseAPI = "de99d62b32317eae24a04bd50f9292cd"
-const queryURL = "https://api.themoviedb.org/3/discover/movie?api_key=de99d62b32317eae24a04bd50f9292cd";
+const queryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newPage}`;
 
-let movieData = null;
+//original fetch for first 20
+fetch(queryURL, options).then((response) => response.json()).then((movieObject) => {
+  console.log(movieObject.results);
 
-fetch(queryURL).then((response) => response.json()).then((movieObject) => {
-        console.log(movieObject.results)
+  movieObject.results.forEach((movie) => {
+
+  generateCards(movie);
+
+  });
+  
+});
+
+//create new fetch so that page reloads 
+function fetchAgain(newFetchPage){
+let newQueryURL = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${newFetchPage}`;
+fetch(newQueryURL, options).then((response) => response.json()).then((movieObject) => {
+        console.log(movieObject.results);
+
+        movieObject.results.forEach((movie) => {
+
+        generateCards(movie);
+
+        });
         
-        movieObject.results.forEach( (movie) => {
-          generateCards(movie);
-        })
-        cardRowSetup(movieContainer);
-        
-})
+});
+}
 
+//sets background black color
 document.body.style.backgroundColor = "black"
 
-// document.body.textContent.style.color = "white"
 
 function generateCards(movieObject){
 
-    //creates movie conatiners for each card 
+    //creates movie conatiners for each card and a rid for the containers
     let movieContainer = document.createElement("section");
+    let movieGridRow = document.querySelector("#grid")
+    movieGridRow.appendChild(movieContainer)
 
+    //adds image to container
     let image = document.createElement('img')
     image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path
     movieContainer.appendChild(image)
@@ -53,20 +82,24 @@ function generateCards(movieObject){
     movieName.classList.add('movie-name');
     movieName.innerText = movieObject.original_title
     movieContainer.appendChild(movieName)
-    document.body.appendChild(movieContainer)
+      
     
 
 }
 
-function cardRowSetup(movieContainer){
-  for(let i = movieContainer[0]; movieContainer[i] % 5; movieContainer[i]++){
-    movieContainer[i] + "<br>";
-  }
-}
-// function cardRowSetup(generateCards){
-// for (movieObject.results[i] = 0; movieObject.results[i] % 5; movieObject.results[i]++) {
-//     generateCards += movieObject[i] + "<br>";
-//   }
-// }
+//creating button variable
+let button = document.createElement("button");
+button.innerHTML = "Search More Movies";
 
-// generateCards(movieData)
+
+//appened to body
+let body = document.getElementsByTagName("body")[0];
+body.appendChild(button);
+
+
+//added event handler
+button.addEventListener ("click", function() {
+  newPage++;
+  fetchAgain(newPage);
+});
+

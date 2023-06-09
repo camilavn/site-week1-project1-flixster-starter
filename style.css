@@ -5,10 +5,39 @@ h1 {
 
 }
 
+.movieGridRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 10%;
+} 
+
+
 .movie-name {
     color: white;
+    display: inline-flex;
 }
 
 .rating {
     color: white; 
 }
+
+body {
+    padding: 20px;
+    text-align: center;
+}
+
+button {
+    margin-top: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    padding: 0 40px;
+    background: white;
+    border: none;
+}
+
+button:hover {
+    background: white;
+}
+  
