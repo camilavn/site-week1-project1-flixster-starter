@@ -134,7 +134,7 @@ submitBttn.addEventListener("click", function (event) {
 
 //labeling creating clear button
 const clearBttn = document.getElementById("#clearBttn");
-clearBttn.innerHTML = "Clear";
+
 
 //connecting api to clear button to go to original 20
 clearBttn.addEventListener("click", function () {

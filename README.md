@@ -1,4 +1,3 @@
-📝 **NOTE** Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
 
 ## Week 1 Assignment: Flixster
 
@@ -34,7 +33,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### Stretch Features
 
-- [x] Deploy website using GitHub Pages.
+- [] Deploy website using GitHub Pages.
 - [ ] Allow user to view more details about a movie within a popup.
 - [x] Improve the user experience through CSS & animation.
 - [ ] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
@@ -44,7 +43,14 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
-`ADD_EMBEDDED_CODE_HERE`
+<a href="https://www.loom.com/share/ac5eecfad85440ab843c681c5c5c8102">
+    <p>Private Video - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/placeholders/private-video.gif">
+  </a>
+
+<div style="position: relative; padding-bottom: 63.04728546409808%; height: 0;"><iframe src="https://www.loom.com/embed/ac5eecfad85440ab843c681c5c5c8102" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+
 
 ### Reflection
 
