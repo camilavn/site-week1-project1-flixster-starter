@@ -43,13 +43,21 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 `TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
 
+
+https://www.loom.com/share/04a570f0107b4a78b6c44007e97b080c
+
+<div style="position: relative; padding-bottom: 63.49206349206349%; height: 0;"><iframe src="https://www.loom.com/embed/04a570f0107b4a78b6c44007e97b080c?sid=b200e611-2a61-4436-bd60-fc98abf674a6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+Document - 13 June 2023 - Watch Video
+
+<!-- 
 <a href="https://www.loom.com/share/ac5eecfad85440ab843c681c5c5c8102">
     <p>Private Video - Watch Video</p>
     <img style="max-width:300px;" src="https://cdn.loom.com/placeholders/private-video.gif">
   </a>
 
 <div style="position: relative; padding-bottom: 63.04728546409808%; height: 0;"><iframe src="https://www.loom.com/embed/ac5eecfad85440ab843c681c5c5c8102" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
-
+ -->
 
 
 ### Reflection
